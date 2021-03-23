@@ -1,0 +1,23 @@
+<div class="section bg-cover" style="background-image: url('https://exhibits.lib.utah.edu/files/large/2215c59e492cc3bbfa3fc20830d1fad6cb6fb1c4.jpg');">
+	<?php
+		$this->headLink()->appendStylesheet($this->assetUrl('css/imagewithtext.css', 'ImageWithText'));
+	?>
+	<div class="container" >
+		<div class="row">
+			<div class="col">
+				<?php
+					if ($heading !== false && $heading !== "") {
+						$heading = sprintf('<h3 class="bg-cover-heading">%s</h3>', $heading);
+					} else {
+						$heading = false;
+					}
+					if ($subheading !== false && $subheading !== "") {
+						$subheading = sprintf('<p class="bg-cover-subheader">%s</p>', $subheading);
+					} else {
+						$subheading = false;
+					}
+				?>
+			</div>
+		</div>
+	</div>
+</div>
