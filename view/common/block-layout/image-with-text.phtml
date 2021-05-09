@@ -1,23 +1,38 @@
-<div class="section bg-cover" style="background-image: url('https://exhibits.lib.utah.edu/files/large/2215c59e492cc3bbfa3fc20830d1fad6cb6fb1c4.jpg');">
-	<?php
-		$this->headLink()->appendStylesheet($this->assetUrl('css/imagewithtext.css', 'ImageWithText'));
-	?>
-	<div class="container" >
-		<div class="row">
-			<div class="col">
-				<?php
-					if ($heading !== false && $heading !== "") {
-						$heading = sprintf('<h3 class="bg-cover-heading">%s</h3>', $heading);
-					} else {
-						$heading = false;
-					}
-					if ($subheading !== false && $subheading !== "") {
-						$subheading = sprintf('<p class="bg-cover-subheader">%s</p>', $subheading);
-					} else {
-						$subheading = false;
-					}
-				?>
-			</div>
-		</div>
-	</div>
-</div>
+<?php
+	echo '<div id="bgimg">';
+	echo '<div class="container">';
+
+	if ($heading !== false && $heading !== ""){
+		echo '<h3 class="iwt-header">' . $heading . '</h3>';
+	}
+	if ($subheading !== false && $subheading !== ""){
+		echo '<p class="iwt-subheader">' . $subheading . '</p>';
+	}
+
+	echo '</div>';
+	echo '</div>';
+
+	echo '<style>
+            .iwt-header{
+                font-size: 30px;
+		font-weight: bold;
+		padding-top: 20px;
+                color: ' . $headercolor . ';
+                text-align: ' . $alignment . ';
+            }
+            .iwt-subheader{
+                font-size: 24px;
+		font-weight: normal;
+                color: ' . $subheadercolor . ';
+                text-align: ' . $alignment . ';
+	    }
+	    #bgimg{
+		background-image: url(\'' . $urls[0] . '\');
+	    	background-position:center;
+		background-size:contain;
+		background-repeat:no-repeat;
+		height: ' . $height . ';
+	    }
+        </style>';
+?>
+

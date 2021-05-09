@@ -1,5 +1,5 @@
 <?php
-namespace BackgroundImageWithText\Site\BlockLayout;
+namespace ImageWithText\Site\BlockLayout;
 
 use Omeka\Api\Representation\SiteRepresentation;
 use Omeka\Api\Representation\SitePageRepresentation;
@@ -9,9 +9,9 @@ use Laminas\View\Renderer\PhpRenderer;
 
 use Laminas\Form\FormElementManager;
 
-use BackgroundImageWithText\Form\ImageWithTextBlock;
+use ImageWithText\Form\TextBlockForm;
 
-class ImageWithText extends AbstractBlockLayout
+class Text extends AbstractBlockLayout
 {
 	/**
      * @var FormElementManager
@@ -40,14 +40,17 @@ class ImageWithText extends AbstractBlockLayout
 	public function form(PhpRenderer $view, SiteRepresentation $site,
         SitePageRepresentation $page = null, SitePageBlockRepresentation $block = null
     ) {
-		$form = $this->formElementManager->get(ImageWithTextBlock::class);
+		$form = $this->formElementManager->get(TextBlockForm::class);
 		$data = $block
 			? $block->data() + $this->defaultSettings
 			: $this->defaultSettings;
 		$form->setData([
 			'o:block[__blockIndex__][o:data][height]' => $data['height'],
+			'o:block[__blockIndex__][o:data][alignment]' => $data['alignment'],
 			'o:block[__blockIndex__][o:data][heading]' => $data['heading'],
+			'o:block[__blockIndex__][o:data][headercolor]' => $data['headercolor'],
 			'o:block[__blockIndex__][o:data][subheading]' => $data['subheading'],
+			'o:block[__blockIndex__][o:data][subheadercolor]' => $data['subheadercolor'],
 		]);
 		$form->prepare();
 
@@ -83,8 +86,12 @@ class ImageWithText extends AbstractBlockLayout
 		
 		return $view->partial('common/block-layout/image-with-text', [
 			'height' => $block->dataValue('height'),
+			'alignment' => $block->dataValue('alignment'),
 			'heading' => $block->dataValue('heading'),
+			'headercolor' => $block->dataValue('headercolor'),
 			'subheading' => $block->dataValue('subheading'),
+			'subheadercolor' => $block->dataValue('subheadercolor'),
+			'urls' => $urls,
 		]);
 	}
 }

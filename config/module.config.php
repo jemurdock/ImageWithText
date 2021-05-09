@@ -1,5 +1,5 @@
 <?php
-namespace BackgroundImageWithText;
+namespace ImageWithText;
 
 return [
     'view_manager' => [
@@ -9,18 +9,19 @@ return [
     ],
 	'block_layouts' => [
         'factories' => [
-            'imagewithtext' => Service\BlockLayout\ImageWithTextFactory::class,
+            'text' => Service\BlockLayout\TextFactory::class,
         ],
     ],
     'form_elements' => [
         'invokables' => [
-            Form\ImageWithTextBlock::class => Form\ImageWithTextBlock::class,
+            Form\TextBlockForm::class => Form\TextBlockForm::class,
         ],
     ],
     'DefaultSettings' => [
-        'ImageWithTextBlock' => [
-            'height' => '500px',
-            'text' => '',
+        'TextBlockForm' => [
+            'height' => '400px',
+            'headercolor' => '#000000',
+            'subheadercolor' => '#000000',
         ]
     ]
 ];

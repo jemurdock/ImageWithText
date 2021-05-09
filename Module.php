@@ -1,5 +1,5 @@
 <?php
-namespace BackgroundImageWithText;
+namespace ImageWithText;
 
 use Omeka\Module\AbstractModule;
 use Laminas\EventManager\SharedEventManagerInterface;
